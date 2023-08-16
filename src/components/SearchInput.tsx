@@ -27,6 +27,8 @@ const InputContainer = styled.div`
         transform: translateY(-50%);
     }
 `
+// passando para o InputProps todas as propriedades que o input html normal recebe, ele está exentendo a classe InputHTMLAttributes,
+// dessa forma é possível passar props do jeito que um input recebe
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     
 }
