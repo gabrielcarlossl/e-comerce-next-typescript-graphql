@@ -27,6 +27,14 @@ const FilterContainer = styled.div`
 
 `
 
+const ArrowIconWrapper = styled.span`
+    transform: rotate(0deg);
+    transition: transform 0.2s ease;
+    &.rotated {
+        transform: rotate(180deg);
+    }
+`
+
 const PriorityFilter = styled.ul`
     position: absolute;
     display: flex;
@@ -46,12 +54,15 @@ const PriorityFilter = styled.ul`
         font-size: 14px;
         cursor: pointer;
     }
+    li:hover {
+        font-weight: bold;
+    }
 `
 
 const FilterByPriority = (props: FilterByPriorityProps) => {
 
     const [isOpen, setIsOpen] = useState(false)
-    const {setPriority} = useFilter()
+    const { setPriority } = useFilter()
 
     const handleUpdatePriority = (value: PriorityTypes) => {
         setPriority(value)
@@ -59,9 +70,12 @@ const FilterByPriority = (props: FilterByPriorityProps) => {
     }
 
     const handleOpen = () => setIsOpen(prev => !prev)
+
     return (
         <FilterContainer>
-            <button onClick={handleOpen}>Organizar por <ArrowDownIcon />
+            <button onClick={handleOpen}>
+                Organizar por
+                <ArrowIconWrapper className={isOpen ? 'rotated' : ''}><ArrowDownIcon /></ArrowIconWrapper>
             </button>
 
             {isOpen && <PriorityFilter>
@@ -69,7 +83,7 @@ const FilterByPriority = (props: FilterByPriorityProps) => {
                 <li onClick={() => handleUpdatePriority(PriorityTypes.BIGGEST_PRICE)}>Preço: Maior - Menor</li>
                 <li onClick={() => handleUpdatePriority(PriorityTypes.MINOR_PRICE)}>Preço: Menor - Maior</li>
                 <li onClick={() => handleUpdatePriority(PriorityTypes.POPULARITY)}>Mais vendidos</li>
-                </PriorityFilter>}
+            </PriorityFilter>}
         </FilterContainer>
     )
 }
