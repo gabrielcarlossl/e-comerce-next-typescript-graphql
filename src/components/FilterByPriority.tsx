@@ -24,7 +24,6 @@ const FilterContainer = styled.div`
         cursor: pointer;
         gap: 16px;
     }
-
 `
 
 const ArrowIconWrapper = styled.span`
@@ -49,6 +48,7 @@ const PriorityFilter = styled.ul`
     width: fit-content;
     top: 100%;
     gap: 4px;
+    z-index: 1;
     li {
         color: var(--text-dark);
         font-size: 14px;
@@ -60,12 +60,13 @@ const PriorityFilter = styled.ul`
 `
 
 const FilterByPriority = (props: FilterByPriorityProps) => {
-
     const [isOpen, setIsOpen] = useState(false)
+    const [selectedPriority, setSelectedPriority] = useState<PriorityTypes | null>(null)
     const { setPriority } = useFilter()
 
     const handleUpdatePriority = (value: PriorityTypes) => {
         setPriority(value)
+        setSelectedPriority(value)
         setIsOpen(false)
     }
 
@@ -74,7 +75,33 @@ const FilterByPriority = (props: FilterByPriorityProps) => {
     return (
         <FilterContainer>
             <button onClick={handleOpen}>
-                Organizar por
+            {selectedPriority !== null ? (
+                (() => {
+                if (
+                    selectedPriority === PriorityTypes.NEWS ||
+                    selectedPriority === PriorityTypes.BIGGEST_PRICE ||
+                    selectedPriority === PriorityTypes.MINOR_PRICE ||
+                    selectedPriority === PriorityTypes.POPULARITY
+                ) {
+                    switch (selectedPriority) {
+                    case PriorityTypes.NEWS:
+                        return 'Novidades';
+                    case PriorityTypes.BIGGEST_PRICE:
+                        return 'Preço: Maior - Menor';
+                    case PriorityTypes.MINOR_PRICE:
+                        return 'Preço: Menor - Maior';
+                    case PriorityTypes.POPULARITY:
+                        return 'Mais vendidos';
+                    default:
+                        return 'Organizar por';
+                    }
+                } else {
+                    return 'Organizar por';
+                }
+                })()
+            ) : (
+                'Organizar por'
+            )}
                 <ArrowIconWrapper className={isOpen ? 'rotated' : ''}><ArrowDownIcon /></ArrowIconWrapper>
             </button>
 
