@@ -6,6 +6,7 @@ import { styled } from 'styled-components'
 import { Saira_Stencil_One } from 'next/font/google'
 import { SearchInputWithIcon } from './SearchInput'
 import { CartControl } from './CartControl'
+import { useFilter } from '@/hooks/useFilter'
 
 const saira_stencil_one = Saira_Stencil_One({ subsets: ['latin'], weight: ['400'] })
 
@@ -31,11 +32,12 @@ const Logo = styled.a`
 
 `
 const Header = (props: HeaderProps) => {
+    const {setSearch, search} = useFilter()
     return (
         <CustomHeader>
             <Logo className={saira_stencil_one.className}>E-Commerce</Logo>
             <div>
-                <SearchInputWithIcon placeholder='Procurando por algo específico?' />
+                <SearchInputWithIcon value={search} handlechange={setSearch} placeholder='Procurando por algo específico?' />
                 <CartControl />
             </div>
         </CustomHeader>
