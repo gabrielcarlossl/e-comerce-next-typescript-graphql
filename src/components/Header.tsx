@@ -17,25 +17,33 @@ const CustomHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content:space-between;
-    padding: 20px 160px;
+    padding: 12px 24px;
     > div {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 4px;
     }
+
+    @media (min-width: ${props => props.theme.desktopBreakPoint}) {
+        padding: 20px 160px;
+    }
 `
 const Logo = styled.a`
     color: var(--logo-color);
-    font-size: 40px;
+    font-size: 24px;
     line-height: 150%;
+    white-space: nowrap;
+    @media (min-width: ${props => props.theme.desktopBreakPoint}) {
+        font-size: 40px;
+    }
 
 `
 const Header = (props: HeaderProps) => {
     const {setSearch, search} = useFilter()
     return (
         <CustomHeader>
-            <Logo className={saira_stencil_one.className}>E-Commerce</Logo>
+            <Logo className={saira_stencil_one.className}>E-Store</Logo>
             <div>
                 <SearchInputWithIcon value={search} handlechange={setSearch} placeholder='Procurando por algo específico?' />
                 <CartControl />

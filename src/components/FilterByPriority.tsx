@@ -47,6 +47,7 @@ const PriorityFilter = styled.ul`
     white-space: nowrap;
     width: fit-content;
     top: 100%;
+    right: 8px;
     gap: 4px;
     z-index: 1;
     li {

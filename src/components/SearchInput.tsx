@@ -9,22 +9,31 @@ export const SearchInput = styled.input`
     padding: 10px 16px;
     font-family: inherit;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
-    width: 352px;
+    font-size: 12px;
+    line-height: 20px;
+    width: 100%;
     color: var(--text-dark);
     border: none;
+
+    @media (min-width: ${props => props.theme.desktopBreakPoint} ) {
+        font-size: 14px;
+        line-height: 22px;
+    }
 
 `
 const InputContainer = styled.div`
     
     position: relative;
-    width: 352px;
+    width: 250px;
     svg {
         position: absolute;
         right: 20px;
         top: 50%;
         transform: translateY(-50%);
+    }
+
+    @media (min-width: ${props => props.theme.desktopBreakPoint}) {
+        width: 352px;
     }
 `
 // passando para o InputProps todas as propriedades que o input html normal recebe, ele está exentendo a classe InputHTMLAttributes,
