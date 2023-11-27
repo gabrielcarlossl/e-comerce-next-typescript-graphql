@@ -19,9 +19,9 @@ const ProductsList = () => {
     <div>
       <ListContainer>
 
-      {
-        data?.map(((product) => <ProductCard title={product.name} price={product.price_in_cents} image={product.image_url} key={product.id} />))
-      }
+        {
+          data?.map(((product) => <ProductCard id={product.id} title={product.name} price={product.price_in_cents} image={product.image_url} key={product.id} />))
+        }
       </ListContainer>
     </div>
   )
