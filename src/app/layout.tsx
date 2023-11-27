@@ -3,12 +3,13 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Saira } from 'next/font/google'
 import { FilterContextProvider } from '@/contexts/filter-context'
+import Defaultproviders from '@/components/default-providers'
 
 const saira = Saira({ subsets: ['latin'], weight: ['300', '400', '500', '600'] })
 
 export const metadata: Metadata = {
-  title: 'E-commerce',
-  description: 'E commerce web app',
+  title: 'E-Store',
+  description: 'E-commerce web app',
 }
 
 export default function RootLayout({
@@ -19,10 +20,10 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={saira.className}>
-        <FilterContextProvider>
+        <Defaultproviders>
           <Header />
           {children}
-        </FilterContextProvider>
+        </Defaultproviders>
       </body>
     </html>
   )
