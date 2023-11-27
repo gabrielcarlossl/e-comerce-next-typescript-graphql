@@ -22,7 +22,7 @@ const CustomHeader = styled.header`
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 4px;
+        gap: 12px;
     }
 
     @media (min-width: ${props => props.theme.desktopBreakPoint}) {
