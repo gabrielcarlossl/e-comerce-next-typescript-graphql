@@ -3,7 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Saira } from 'next/font/google'
 import { FilterContextProvider } from '@/contexts/filter-context'
-import Defaultproviders from '@/components/default-providers'
+import Defaultproviders from '@/components/DefaultProviders'
 
 const saira = Saira({ subsets: ['latin'], weight: ['300', '400', '500', '600'] })
 
