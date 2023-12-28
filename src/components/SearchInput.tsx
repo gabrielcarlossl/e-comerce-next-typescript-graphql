@@ -40,13 +40,14 @@ const InputContainer = styled.div`
 // dessa forma é possível passar props do jeito que um input recebe
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     value: string,
-    handlechange: (value: string) => void
+    handleChange: (value: string) => void
 }
 
 export function SearchInputWithIcon(props: InputProps){
+    const { value, handleChange: handleChange, ...inputProps } = props
     return(
         <InputContainer>
-            <SearchInput onChange={(event) => props.handlechange(event.target.value)} {...props}/>
+            <SearchInput onChange={(event) => handleChange(event.target.value)} {...inputProps}/>
             <SearchIcon/>
         </InputContainer>
     )
