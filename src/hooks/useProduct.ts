@@ -20,7 +20,8 @@ export function useProduct(id: string){
     const {data} = useQuery({
         queryFn: () => fetcher(id),
         queryKey: ['product', id],
-        enable: !!id
+        enable: !!id,
+        staleTime: 1000 * 60 * 5 // controle para fazer requisição apenas apos 5 min
     })
     return {
         data: data?.data?.data?.Product
