@@ -5,6 +5,7 @@
 - NextJS
 - TypeScript
 - GraphQL
+- local Storage
 
 ### Style
 
@@ -15,7 +16,7 @@
 - [X] Filter of products by categories 
 - [X] Search products by name
 - [X] Add and remove products from cart
-- [X] Checkout
+- [X] Checkout page
 
 ## What I Focused
 
