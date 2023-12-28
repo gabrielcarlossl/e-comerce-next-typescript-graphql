@@ -34,6 +34,8 @@ const Logo = styled.a`
     font-size: 24px;
     line-height: 150%;
     white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
     @media (min-width: ${props => props.theme.desktopBreakPoint}) {
         font-size: 40px;
     }
@@ -43,9 +45,9 @@ const Header = (props: HeaderProps) => {
     const {setSearch, search} = useFilter()
     return (
         <CustomHeader>
-            <Logo className={saira_stencil_one.className}>E-Store</Logo>
+            <Logo className={saira_stencil_one.className} href='/'>E-Store</Logo>
             <div>
-                <SearchInputWithIcon value={search} handlechange={setSearch} placeholder='Procurando por algo específico?' />
+                <SearchInputWithIcon value={search} handleChange={setSearch} placeholder='Procurando por algo específico?' />
                 <CartControl />
             </div>
         </CustomHeader>
