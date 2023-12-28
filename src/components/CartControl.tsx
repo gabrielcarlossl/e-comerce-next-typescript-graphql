@@ -1,5 +1,7 @@
+'use client'
 import { useLocalStorage } from '@/hooks/useLocalStore';
 import { CartIcon } from '@/icons/CartIcon';
+import { useRouter } from 'next/navigation'
 import { styled } from 'styled-components';
 
 const CartCount = styled.span`
@@ -21,9 +23,12 @@ const CartContainer = styled.div`
 
 export function CartControl(){
     const { value } = useLocalStorage('cart-items', [])
-
+    const router = useRouter()
+    const handleNavigate = () => {
+        router.push('/cart')
+    }
     return (
-        <CartContainer>
+        <CartContainer onClick={handleNavigate}>
             <CartIcon/>
             {value.length && <CartCount>{value.length}</CartCount>}
         </CartContainer>
